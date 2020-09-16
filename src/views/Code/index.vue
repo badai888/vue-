@@ -28,43 +28,42 @@
 <script>
 import navgation from '@/components/navigation'
 import { mapState } from 'vuex'
-  export default {
+export default {
   //     data() {
   //   return {
-  
-  
+
   //   }
-   
+
   // },
   methods: {
-    toggle(){
-     if(this.cardType ==='add'){
-       this.$router.push('/address')
-     }else{
-       this.$router.push('/addlist')
-     }
+    toggle () {
+      if (this.cardType === 'add') {
+        this.$router.push('/address')
+      } else {
+        this.$router.push('/addlist')
+      }
     },
-    onSubmit(){
+    onSubmit () {
       alert(1)
     }
   },
-  computed:{
-      ...mapState({
-      itemsh:(state)=>state.code.noworder
+  computed: {
+    ...mapState({
+      itemsh: (state) => state.code.noworder
     }),
-    cardType(){
-     if( this.itemsh.contact.name){
-       return 'edit'
-     }else{
+    cardType () {
+      if (this.itemsh.contact.name) {
+        return 'edit'
+      } else {
         return 'add'
-     }
+      }
     }
   },
-    components:{
-      navgation
-    }
-    
+  components: {
+    navgation
   }
+
+}
 </script>
 
 <style lang="scss" scoped>

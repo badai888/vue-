@@ -1,28 +1,28 @@
 export default {
-  namespaced:true,
-  mutations:{
-    setlist(state,cont){
-      if(cont.isDefault){
-        state.list.forEach(el =>el.isDefault = false)
+  namespaced: true,
+  mutations: {
+    setlist (state, cont) {
+      if (cont.isDefault) {
+        state.list.forEach(el => el.isDefault = false)
       }
       // console.log(state.list)
       state.list.push(cont)
     },
-    setlistsd(state,conts){
-      state.list[conts.index]=conts.content
+    setlistsd (state, conts) {
+      state.list[conts.index] = conts.content
     }
-    
+
   },
-  state:{
-    list:[
-      { 
-         id:'1',
-      name:'小明',
-      tel:12345678911,
-      address:'安徽省合肥市肥西县包河区',
-      isDefault:false
-      },
-      // {  
+  state: {
+    list: [
+      {
+        id: '1',
+        name: '小明',
+        tel: 12345678911,
+        address: '安徽省合肥市肥西县包河区',
+        isDefault: false
+      }
+      // {
       //   id:'2',
       //   name:'小王',
       //   tel:12345678911,
@@ -30,7 +30,7 @@ export default {
       //   isDefault:true
       // }
     ],
-    addinfo:{
+    addinfo: {
       province_list: {
         110000: '北京市',
         120000: '天津市',
@@ -66,7 +66,7 @@ export default {
         710000: '台湾省',
         810000: '香港特别行政区',
         820000: '澳门特别行政区',
-        900000: '海外',
+        900000: '海外'
       },
       city_list: {
         110100: '北京市',
@@ -680,7 +680,7 @@ export default {
         987600: '瓦利斯和富图纳',
         988200: '萨摩亚',
         988700: '也门',
-        989400: '赞比亚',
+        989400: '赞比亚'
       },
       county_list: {
         110101: '东城区',

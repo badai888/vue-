@@ -30,8 +30,8 @@
   :style="{ height: '30%' }"
 >
 <!-- 弹出商品信息 -->
-<van-card 
- 
+<van-card
+
   :num="item.num"
   :price="item.minPrice"
   :title="item.name"
@@ -44,7 +44,6 @@
    <van-button type="primary" @click="addcart" size="large">确定</van-button>
   </template>
 </van-card>
-
 
 </van-popup>
     </div>
@@ -59,57 +58,57 @@
 </template>
 
 <script>
-import navigation from "@/components/navigation"
-import { mapActions} from 'vuex'
+import navigation from '@/components/navigation'
+import { mapActions } from 'vuex'
 import { shanopdatail } from '@/api'
 import { Toast } from 'vant'
 export default {
-  data(){
-   return{
-      detal:[],
-      item:{
-        num:1,
-        ischeck:true
+  data () {
+    return {
+      detal: [],
+      item: {
+        num: 1,
+        ischeck: true
       },
-      show:false
-   }
+      show: false
+    }
   },
-  created(){
+  created () {
     this.getcher()
   },
   methods: {
-    ...mapActions('cart',['addCart']),
-    addcart(item){
+    ...mapActions('cart', ['addCart']),
+    addcart (item) {
       this.addCart(this.item)
       Toast('加入购物车成功')
     },
-    getcher(){
-      shanopdatail(this.$route.query.id).then(res=>{
+    getcher () {
+      shanopdatail(this.$route.query.id).then(res => {
         //  console.log(res);
-        if(res.data.code===0){   
+        if (res.data.code === 0) {
           this.detal = res.data.data
-          this.item={
+          this.item = {
             ...this.item,
             ...res.data.data.basicInfo
           }
         }
       })
     },
-    fowchange(){
-      this.show=!this.show
+    fowchange () {
+      this.show = !this.show
     }
-  
+
   },
-      computed: {
-          content(){
-            return this.detal.content.replace(/<img/g,'<img style="vertical-align:buttom;width:100%')
-      }
-      },
+  computed: {
+    content () {
+      return this.detal.content.replace(/<img/g, '<img style="vertical-align:buttom;width:100%')
+    }
+  },
   components: {
-    navigation,
- 
-  },
-};
+    navigation
+
+  }
+}
 </script>
 
 <style lang="scss" scoped>

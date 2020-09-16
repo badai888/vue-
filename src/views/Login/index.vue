@@ -11,50 +11,48 @@
 </template>
 
 <script>
-  export default {
-    data(){
-      return{
-        numi:1 ,
-        text:"",
-        password:""
+export default {
+  data () {
+    return {
+      numi: 1,
+      text: '',
+      password: ''
+    }
+  },
+  methods: {
+    disembark () {
+      if (this.text !== '' && this.password !== '') {
+        setTimeout(() => {
+          const vm = 'iuqbfiqfb'
+          localStorage.setItem('textp', vm)
+          if (this.$route.params.from) {
+            this.$router.push(this.$route.params.from)
+          } else {
+            this.$router.push('/home')
+          }
+        }, 2000)
+      } else {
+        return false
       }
     },
-    methods: {
-      disembark(){
-        if(this.text !==""  && this.password !==""){
-      
-        setTimeout(()=>{   
-          let vm ='iuqbfiqfb'
-         localStorage.setItem('textp',vm)
-        if(this.$route.params.from){
-          this.$router.push(this.$route.params.from)
-        }else{
-          this.$router.push('/home')
-        }},2000)
-        }else{
-          return false
-        }
-     
-      },
-      change(){
-        console.log(this.numi);
-        if(this.numi===1){
-          this.numi=0
-
-        }else{
-          this.numi=1
-        }
-      },
-      changes(){
-         if(this.numi=1){
-          this.numi=0
-        }else{
-          this.numi=1
-        }
+    change () {
+      console.log(this.numi)
+      if (this.numi === 1) {
+        this.numi = 0
+      } else {
+        this.numi = 1
       }
     },
-    
+    changes () {
+      if (this.numi = 1) {
+        this.numi = 0
+      } else {
+        this.numi = 1
+      }
+    }
   }
+
+}
 </script>
 
 <style lang="scss" scoped>

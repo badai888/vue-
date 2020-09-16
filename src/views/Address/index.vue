@@ -16,26 +16,26 @@
 
 <script>
 import navigation from '@/components/navigation'
-import {mapState ,mapMutations} from 'vuex'
-  export default {
-    methods:{
-      ...mapMutations('address',['setlist']),
-      onSave(setlists){
-        setlists.id=Date.now()
-        this.setlist(setlists)
-        console.log(setlists)
-        this.$router.push('/addlist')
-      }
-    },
-    components:{
-      navigation
-    },
-    computed: {
-      ...mapState({
-        addinfo:(state) => state.address.addinfo
-      })
-    },
+import { mapState, mapMutations } from 'vuex'
+export default {
+  methods: {
+    ...mapMutations('address', ['setlist']),
+    onSave (setlists) {
+      setlists.id = Date.now()
+      this.setlist(setlists)
+      console.log(setlists)
+      this.$router.push('/addlist')
+    }
+  },
+  components: {
+    navigation
+  },
+  computed: {
+    ...mapState({
+      addinfo: (state) => state.address.addinfo
+    })
   }
+}
 </script>
 
 <style lang="scss" scoped>

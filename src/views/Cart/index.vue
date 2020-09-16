@@ -42,96 +42,96 @@
 <script>
 import navigation from '@/components/navigation'
 import mytabber from '@/components/MyTabber'
-import { Dialog } from 'vant';
-import {mapState , mapMutations , mapActions} from 'vuex'
-import {textpy} from '@/ulit'
-  export default {
-    data(){
-      return{
-        checked:false
-      }
+import { Dialog } from 'vant'
+import { mapState, mapMutations, mapActions } from 'vuex'
+import { textpy } from '@/ulit'
+export default {
+  data () {
+    return {
+      checked: false
+    }
+  },
+  created () {
+    // 总价
+    this.nom_total()
+  },
+  methods: {
+    textpy,
+    ...mapMutations('cart', ['setcarts', 'del_item', 'isAllcheck', 'Allcheck']),
+    ...mapActions('cart', ['nom_total']),
+    ...mapMutations('code', ['setorders']),
+    Allcheckd () {
+      this.Allcheck(this.carts.idAllchecked)
+      this.nom_total()
     },
-    created() {
-      //总价
-     this.nom_total()
-    },
- methods: {
-   textpy,
-   ...mapMutations('cart',['setcarts','del_item','isAllcheck',"Allcheck"]),
-   ...mapActions('cart',['nom_total']),
-   ...mapMutations('code',['setorders']),
-   Allcheckd(){
-       this.Allcheck(this.carts.idAllchecked)  
-        this.nom_total()
-   },
-   ischeck(){
-      this.setcarts(this.carts) //改变数量计算
-      this.nom_total()    //总价
-    let item = this.carts.item
-      let Allcheck = item.every(el=>el.ischeck)
+    ischeck () {
+      this.setcarts(this.carts) // 改变数量计算
+      this.nom_total() // 总价
+      const item = this.carts.item
+      const Allcheck = item.every(el => el.ischeck)
       this.isAllcheck(Allcheck)
-   },
-    numcart(){
-      //数量改变
-        this.setcarts(this.carts)
-        this.nom_total()
-      },
-      dels(index){
-        Dialog.confirm({
+    },
+    numcart () {
+      // 数量改变
+      this.setcarts(this.carts)
+      this.nom_total()
+    },
+    dels (index) {
+      Dialog.confirm({
         // title: '标题',
-        message: '确认删除嘛？',
+        message: '确认删除嘛？'
       })
         .then(() => {
           this.del_item(index)
-        }) 
-      },
-   onSubmit(){
-     if(this.textpy){
-       const codeitem = this.carts.item.filter(el=>el.ischeck) //选中的商品
-       let contact={}
-      if(this.list.length>0){
-        const lis=this.list.find(el=> el.isDefault)
-        // console.log(lis)
-        if(lis){
-          contact = lis
-        }else{
-          contact =this.list[0]
-        }
+        })
+    },
+    onSubmit () {
+      if (this.textpy) {
+        const codeitem = this.carts.item.filter(el => el.ischeck) // 选中的商品
+        let contact = {}
+        if (this.list.length > 0) {
+          const lis = this.list.find(el => el.isDefault)
+          // console.log(lis)
+          if (lis) {
+            contact = lis
+          } else {
+            contact = this.list[0]
+          }
           // console.log(contact)
-      }else{
-        this.$router.push('/address')
-      }
- 
-        const nowOrder={
-          code:Date.now(),
-          items:codeitem,
-          contact,
-          price:this.carts.total
+        } else {
+          this.$router.push('/address')
         }
-          // console.log(nowOrder)
+
+        const nowOrder = {
+          code: Date.now(),
+          items: codeitem,
+          contact,
+          price: this.carts.total
+        }
+        // console.log(nowOrder)
         this.setorders(nowOrder)
         this.$router.push('/code')
-     }else{
-       this.$router.push({
-         name:'login',
-         params:{
-           from:'/cart'
-         }
-       })
-     }
-   }
- },
-   components:{
-     mytabber,
-     navigation
-   },
-   computed: {
-     ...mapState({
-       carts:(state) =>state.cart.carts,
-       list:(state) => state.address.list
-     })
-   },
+      } else {
+        this.$router.push({
+          name: 'login',
+          params: {
+            from: '/cart'
+          }
+        })
+      }
+    }
+  },
+  components: {
+    mytabber,
+    navigation
+  },
+  computed: {
+    ...mapState({
+      carts: (state) => state.cart.carts,
+      list: (state) => state.address.list
+    })
   }
+}
 </script>
 
 <style lang="scss" scoped>

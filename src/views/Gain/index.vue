@@ -2,7 +2,8 @@
   <div>
     <navgation title="商品分类"></navgation>
     <!-- {{$route.params.categoryId}} -->
-    <div id="main">
+    
+    <div id="main">{{this.$route.params.word}}
       <div class="classify">
         <div :class="['classify-l',{activ:active.orderBy === 0}]" @click="jump">
           <span >价格</span>
@@ -92,10 +93,10 @@ export default {
     },
     litem () {
       litemlist({
-        categoryId: this.$route.params.categoryId, // 分类的值
+        // categoryId: this.$route.params.categoryId, // 分类的值
+        k:this.$route.query.word,
         orderBy: this.orderBy
       }).then(res => {
-        console.log(res)
         this.item = res.data.data
         console.log(this.item)
       })
@@ -201,6 +202,7 @@ export default {
        width:50%;
        img{
      width: 100%;
+     height: 100%;
       }
     }
     .item-right{   font-size: 16px;

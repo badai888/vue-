@@ -3,17 +3,17 @@ module.exports = {
   devServer: {
     port: 9527,
     open: true,
-    proxy:{
-      '/commer':{
-        target:'https://api.it120.cc',
-        ws:false,
+    proxy: {
+      '/commer': {
+        target: 'https://api.it120.cc',
+        ws: false,
         changeOrigin: true,
-        pathRewrite:{
-          '^/commer':'/commer'
+        pathRewrite: {
+          '^/commer': '/commer'
         }
       }
     }
   },
-  lintOnSave: false,
+  lintOnSave: false
 
 }

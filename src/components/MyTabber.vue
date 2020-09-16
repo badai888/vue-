@@ -45,19 +45,19 @@
 
 <script>
 import { mapState } from 'vuex'
-  export default {
-    data(){
-      return{
-      
-      }
-    },
-    computed:{
-      ...mapState({
-        carts:(state) =>state.cart.carts.item
-      })
+export default {
+  data () {
+    return {
+
     }
-    
+  },
+  computed: {
+    ...mapState({
+      carts: (state) => state.cart.carts.item
+    })
   }
+
+}
 </script>
 
 <style lang="scss" scoped>

@@ -17,25 +17,25 @@
 </template>
 
 <script>
-  export default {
-    props:{
-      title:{
-        type:String,
-       requured:true
-      }
-    },
-    methods:{
-      onClickLeft(){
-        this.$router.go(-1)
-      }
+export default {
+  props: {
+    title: {
+      type: String,
+      requured: true
+    }
+  },
+  methods: {
+    onClickLeft () {
+      this.$router.go(-1)
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
 
 .van-nav-bar{
-  
+
 background: #435448;
 width: 100%;
 position: fixed;
@@ -53,6 +53,5 @@ left: 0;
   font-size:18px;
    color:white;
 }
-
 
 </style>

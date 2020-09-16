@@ -1,4 +1,4 @@
-const  textpy = ()=> !!localStorage.getItem('textp')
+const textpy = () => !!localStorage.getItem('textp')
 export {
   textpy
 }
